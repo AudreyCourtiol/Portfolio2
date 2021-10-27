@@ -94,73 +94,26 @@ public class Graph{
 
     //We use a switch case to identify each index to the name of a city
     public String ID(int num){
-        String name = "";
+        String name = switch (num) {
+            case 0 -> "Eskildstrup";
+            case 1 -> "Haslev";
+            case 2 -> "Holbæk";
+            case 3 -> "Jærgerspris";
+            case 4 -> "Kalundborg";
+            case 5 -> "Korsør";
+            case 6 -> "Køge";
+            case 7 -> "Maribo";
+            case 8 -> "Næstved";
+            case 9 -> "Ringsted";
+            case 10 -> "Slagelse";
+            case 11 -> "Nykøbing F";
+            case 12 -> "Vordingborg";
+            case 13 -> "Roskilde";
+            case 14 -> "Sorø";
+            case 15 -> "Nakskov";
+            default -> "";
+        };
 
-        switch (num){
-            case 0:
-                name = "Eskildstrup";
-                break;
-
-            case 1:
-                name = "Haslev";
-                break;
-
-            case 2:
-                name = "Holbæk";
-                break;
-
-            case 3:
-                name = "Jærgerspris";
-                break;
-
-            case 4:
-                name = "Kalundborg";
-                break;
-
-            case 5:
-                name = "Korsør";
-                break;
-
-            case 6:
-                name = "Køge";
-                break;
-
-            case 7:
-                name = "Maribo";
-                break;
-
-            case 8:
-                name = "Næstved";
-                break;
-
-            case 9:
-                name = "Ringsted";
-                break;
-
-            case 10:
-                name = "Slagelse";
-                break;
-
-            case 11:
-                name = "Nykøbing F";
-                break;
-
-            case 12:
-                name = "Vordingborg";
-                break;
-
-            case 13:
-                name = "Roskilde";
-                break;
-
-            case 14:
-                name = "Sorø";
-                break;
-
-            case 15:
-                name = "Nakskov";
-                break;
-        }
         return name;
     }
 }
