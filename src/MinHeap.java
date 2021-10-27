@@ -1,19 +1,20 @@
-class HeapNode {
+class HeapNode{ //the informations we put in one heap node
     int vertex;
     int key;
 }
 
-class ResultSet {
+class ResultSet{
     int parent;
     int weight;
 }
 
-public class MinHeap {
+public class MinHeap{
     int capacity;
     int currentSize;
     HeapNode[] node;
     int[] indexes;
-    public MinHeap(int capacity) {
+
+    public MinHeap(int capacity){ //creation of the minimal Heap
         this.capacity = capacity;
         node = new HeapNode[capacity + 1];
         indexes = new int[capacity];
@@ -22,20 +23,26 @@ public class MinHeap {
         node[0].vertex = -1;
         currentSize = 0;
     }
-    public void swap(int a, int b) {
+
+    public void swap(int a, int b){ //swapping places between two nodes
         HeapNode temp = node[a];
         node[a] = node[b];
         node[b] = temp;
     }
-    public boolean isEmpty() {
+
+    public boolean isEmpty(){ //The heap is empty
         return currentSize == 0;
     }
-    public int heapSize() {
+
+    public int heapSize(){ //returns the size of the current heap
         return currentSize;
     }
-    public void bubbleUp(int pos) {
+
+    public void bubbleUp(int pos){ //To know if we need to swap places between two nodes
         int parentIdx = pos / 2;
         int currentIdx = pos;
+
+        //while the parent node is bigger than our current node, we swap them
         while (currentIdx > 0 && node[parentIdx].key > node[currentIdx].key) {
             HeapNode currentNode = node[currentIdx];
             HeapNode parentNode = node[parentIdx];
@@ -46,14 +53,16 @@ public class MinHeap {
             parentIdx = parentIdx / 2;
         }
     }
-    public void insert(HeapNode x) {
+
+    public void insert(HeapNode x){ //adding a node to the heap
         currentSize++;
         int idx = currentSize;
         node[idx] = x;
         indexes[x.vertex] = idx;
         bubbleUp(idx);
     }
-    public HeapNode extractMin() {
+
+    public HeapNode extractMin(){ //extract the smallest node
         HeapNode min = node[1];
         HeapNode lastNode = node[currentSize];
         indexes[lastNode.vertex] = 1;
@@ -63,22 +72,20 @@ public class MinHeap {
         currentSize--;
         return min;
     }
-    public void sinkDown(int k) {
+
+    //We get the index of a node and we check whether we need to move it or not
+    public void sinkDown(int k){
         int smallest = k;
-        // left child
-        int leftChild = 2 *k;
-        // right child
-        int rightChild = 2 *k + 1;
-        if (leftChild < heapSize() && node[smallest].key > node[leftChild].key)
-        {
+        int leftChild = 2 *k; // left child
+        int rightChild = 2 *k + 1; // right child
+
+        if(leftChild < heapSize() && node[smallest].key > node[leftChild].key){
             smallest = leftChild;
         }
-        if (rightChild < heapSize() && node[smallest].key > node[rightChild].key)
-        {
+        if(rightChild < heapSize() && node[smallest].key > node[rightChild].key){
             smallest = rightChild;
         }
-        if (smallest != k)
-        {
+        if(smallest != k){
             HeapNode smallestNode = node[smallest];
             HeapNode kNode = node[k];
             indexes[smallestNode.vertex] = k;
