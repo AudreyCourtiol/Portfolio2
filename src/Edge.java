@@ -1,11 +1,9 @@
 public class Edge {
-    // Source node
-    int u;
-    // Destination node
-    int v;
-    // Edge weight
-    int weight;
-    public Edge(int u, int v, int weight) {
+    int u; // first edge of the vertex
+    int v; // second edge of the vertex
+    int weight;  // the value of the distance between the edges
+
+    public Edge(int u, int v, int weight){ //creation of an edge
         this.u = u;
         this.v = v;
         this.weight = weight;
